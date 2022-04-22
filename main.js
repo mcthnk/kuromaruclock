@@ -1,6 +1,7 @@
 var hyoujihihyouji = 0;
 
 function syoki(){
+    window.scrollTo(0,0);
     document.getElementById("menu").style.visibility ="hidden";
     hyoujihihyouji = 0;
 };
