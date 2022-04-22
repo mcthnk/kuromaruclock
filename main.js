@@ -2,14 +2,8 @@ var hyoujihihyouji = 0;
 
 function syoki(){
     document.getElementById("menu").style.visibility ="hidden";
-	document.addEventListener("mousewheel", notscroll, { passive: false });
-	document.addEventListener("touchmove", notscroll, { passive: false });
     hyoujihihyouji = 0;
 };
-
-function notscroll(e) {
-	e.preventDefault();
-}
 
 function yyyymmddhhmiss() {
     var date = new Date();
