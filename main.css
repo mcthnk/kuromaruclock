@@ -3,6 +3,11 @@
 	padding: 0;
     user-select: none;
 }
+
+a:visited{
+    color: blue;
+}
+
 body{
     background-color: rgb(47, 55, 65);
 }
@@ -19,7 +24,7 @@ body{
     margin-left: 30px;
     padding-top: 5px;
     width: 20%;
-    height: 40%;
+    height: 30%;
     background-color: white;
     box-shadow: 5px 5px gray;
 }
