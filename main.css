@@ -8,6 +8,10 @@ a:visited{
     color: blue;
 }
 
+button{
+    font-family: Noto Sans JP;
+}
+
 #byouswitch{
     width: 180px;
     padding-bottom: 12px;
