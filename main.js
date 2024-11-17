@@ -1,10 +1,43 @@
+// hyoujihijyouji 0はクローズ状態
 var hyoujihihyouji = 0;
+// デフォルトは秒表示OFF 0でOFF、1でON
+var byou = 0;
 
 function syoki(){
     window.scrollTo(0,0);
     document.getElementById("menu").style.visibility ="hidden";
     hyoujihihyouji = 0;
-};
+    byou = localStorage.getItem('kirikaehozon');
+    if (byou == 0){
+      document.getElementById("byouswitch").src = "img/off.png";
+    }else if (byou == 1){
+      document.getElementById("byouswitch").src = "img/on.png";
+    }
+    if (byou == null){
+      byou = 0;
+    }
+}
+
+function byoukirikae(){
+    if(byou == 0){
+      byou = 1;
+      document.getElementById("byouswitch").src = "img/on.png";
+      localStorage.setItem('kirikaehozon', '1');
+    }else if(byou == 1){
+      byou = 0;
+      document.getElementById("byouswitch").src = "img/off.png";
+      localStorage.setItem('kirikaehozon', '0');
+    }else{
+      alert("エラーが発生しました");
+    }
+}
+
+function resetbyou(){
+  localStorage.removeItem('kirikaehozon');
+  var kakunin = localStorage.getItem('kirikaehozon');
+  alert("消去しました");
+  location.reload();
+}
 
 function yyyymmddhhmiss() {
     var date = new Date();
@@ -16,10 +49,17 @@ function yyyymmddhhmiss() {
     var ss = toDoubleDigits(date.getSeconds());
     var youbi = date.getDay();
     var youbirisuto = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"][youbi];
-    var element = document.getElementById("tokei");
-    element.innerHTML = hh + ':' + mi;
-    var element = document.getElementById("hizuke");
-    element.innerHTML = yyyy + '/' + mm + '/' + dd + " " + youbirisuto;
+    if(byou == 0){
+      var element = document.getElementById("tokei");
+      element.innerHTML = hh + ':' + mi;
+      var element = document.getElementById("hizuke");
+      element.innerHTML = yyyy + '/' + mm + '/' + dd + " " + youbirisuto;
+    }else if(byou == 1){
+      var element = document.getElementById("tokei");
+      element.innerHTML = hh + ':' + mi + ':' + ss;
+      var element = document.getElementById("hizuke");
+      element.innerHTML = yyyy + '/' + mm + '/' + dd + " " + youbirisuto;
+    }
 }
   var toDoubleDigits = function(num) {
     num += "";
@@ -30,6 +70,7 @@ function yyyymmddhhmiss() {
   };
   setInterval(yyyymmddhhmiss, 100);
 
+  // hyoujihijyouji 0はクローズ状態、1はオープン状態
 function menuopen(){
     if(hyoujihihyouji == 0){
         document.getElementById("menu").style.visibility ="visible";
