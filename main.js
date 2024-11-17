@@ -11,7 +11,7 @@ function syoki(){
     if (byou == 0){
       document.getElementById("byouswitch").src = "img/off.png";
     }else if (byou == 1){
-      document.getElementById("byouswitch").src = "img/on.png";
+      document.getElementById("byouswitch").src = "img/ON.png";
     }
     if (byou == null){
       byou = 0;
@@ -21,7 +21,7 @@ function syoki(){
 function byoukirikae(){
     if(byou == 0){
       byou = 1;
-      document.getElementById("byouswitch").src = "img/on.png";
+      document.getElementById("byouswitch").src = "img/ON.png";
       localStorage.setItem('kirikaehozon', '1');
     }else if(byou == 1){
       byou = 0;
